@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.jgsoftwares.sipphone</groupId>
+    <artifactId>asteriksipphone</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
+        <exec.mainClass>de.jgsoftwares.sipphone.asteriksipphone.Asteriksipphone</exec.mainClass>
+    </properties>
+    
+    
+ 
+    <dependencies>
+       
+            <dependency>
+                <groupId>org.asteriskjava</groupId>
+                <artifactId>asterisk-java</artifactId>
+                <version>1.0.0-final</version>
+            </dependency>
+
+
+   
+
+
+    </dependencies>
+    
+    <build>
+        <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.openejb.maven</groupId>
+                        <artifactId>tomee-maven-plugin</artifactId>
+                        <version>1.7.1</version>
+                        <configuration>
+                          <tomeeVersion>1.7.1</tomeeVersion>
+                          <tomeeClassifier>plus</tomeeClassifier>
+                        </configuration>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>org.graalvm.buildtools</groupId>
+                        <artifactId>native-maven-plugin</artifactId>
+                    </plugin>
+            
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+
+                            <classifier>spring-boot</classifier>
+                            <mainClass>de.jgsoftwares.sipphone.asteriksipphone.Asteriksipphone</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+             
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <showDeprecation>false</showDeprecation>
+                    <debug>false</debug>
+                </configuration>
+            </plugin>
+            
+         
+   
+
+
+        </plugins>
+    </build>
+     <repositories>
+        <repository>
+            <id>spring-release</id>
+            <url>http://repo.spring.io/libs-release</url>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <url>http://repo.spring.io/libs-milestone</url>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshot</id>
+            <url>http://repo.spring.io/libs-snapshot</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Repository for Maven 2</name>
+            <url>http://download.java.net/maven/2/</url>
+        </repository>
+      </repositories>
+</project>
